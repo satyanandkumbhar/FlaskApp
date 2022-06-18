@@ -13,7 +13,7 @@ pipeline {
     }
     stage ("Deploy") {
       steps {
-        sh 'docker run -p 5000:5000 flaskapp'
+        sh 'docker run -d -rm -p 5000:5000 flaskapp'
       }
     }
   }
