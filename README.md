@@ -32,4 +32,4 @@ Multiple options to run this app
 * Deploy using pipeline
   * Use the provided Jenkins file to create a pipeline
   * The jenkins will do all the steps
-  * Application will be accible at port 5000
+  * Application will be accessible at port 5000
