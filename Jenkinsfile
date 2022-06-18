@@ -1,25 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage ("build") {
+    stage ("Build") {
       steps {
-        echo 'building application.....'
+        sh 'pip3 install -r requirements.txt'
       }
     }
-    stage ("test") {
-      // you can specify condition to satisfy before the steps are executed
-      when {
-        expression {
-          BRANCH_NAME =='jenkins-addition' || BRANCH_NAME =='main'
-        }
-      }
+    stage ("Build Docker Image") {      
       steps {
-        echo 'testing application.....'
+        sh 'docker build -t flaskapp .'
       }
     }
-    stage ("deploy") {
+    stage ("Deploy") {
       steps {
-        echo 'deploying application.....'
+        sh 'docker run -p 5000:5000 flaskapp'
       }
     }
   }
